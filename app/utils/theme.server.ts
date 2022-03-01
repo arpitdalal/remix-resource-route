@@ -1,13 +1,13 @@
 import { createCookie } from 'remix';
-
-import { DEFAULT_THEME } from '~/themes';
-
 import type { ThemeNames } from '~/themes';
+import { DEFAULT_THEME } from '~/themes';
 
 // Create theme cookie
 export const themeCookie = createCookie("theme", {
   expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365 * 10), // 10 years,
   secure: process.env.NODE_ENV === "production", // secure if in production
+  path: "/",
+  sameSite: "lax",
 });
 
 /**
